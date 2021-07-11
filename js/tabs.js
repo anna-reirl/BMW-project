@@ -1,5 +1,6 @@
 const tabsHandlerElems = document.querySelectorAll('[data-tabs-handler]')
 const tabsFieldElems = document.querySelectorAll('[data-tabs-field]')
+const headTitle = document.querySelectorAll('.design__title')
 
 for (const tab of tabsHandlerElems) {
     tab.addEventListener('click', () => {
@@ -15,6 +16,18 @@ for (const tab of tabsHandlerElems) {
                 item.classList.remove('hidden')
             } else {
                 item.classList.add('hidden')
+            }
+        })
+    })
+}
+
+for (const head of headTitle) {
+    head.addEventListener('click', () => {
+        headTitle.forEach(item => {
+            if (head === item) {
+                item.classList.add('hidden')
+            } else {
+                item.classList.toggle('hidden')
             }
         })
     })
