@@ -40,13 +40,22 @@ const formHandler = (form) => {
                 data[name] = value
             }
         }
+
+        const smallElem = document.createElement('small')
+
         sendData(JSON.stringify(data),
             (id) => {
-                alert('Ваша заявка №' + id + '! \nВ ближайшее время с вами свяжемся.')
+                smallElem.innerHTML = 'Ваша заявка №' + id 
+                + '! \nВ ближайшее время с вами свяжемся.'
+                smallElem.style.color = 'green'
+                form.append(smallElem)
             },
             (err) => {
-                alert('К сожалению технические неполадки, попробуйте отправить заявку позже. ' + err)
+                smallElem.innerHTML = 'К сожалению технические неполадки, попробуйте отправить заявку позже. ' + err
+                smallElem.style.color = 'red'
+                form.append(smallElem)
             })
+        form.reset()
     })
 }
 
